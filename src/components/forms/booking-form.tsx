@@ -12,6 +12,13 @@ export function BookingForm() {
     const [isPending, setIsPending] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
+    const today = new Date();
+    const minDate = today.toISOString().split("T")[0]; // "YYYY-MM-DD"
+
+    const maxDateObj = new Date();
+    maxDateObj.setDate(today.getDate() + 30);
+    const maxDate = maxDateObj.toISOString().split("T")[0]; // "YYYY-MM-DD"
+
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setIsPending(true);
@@ -96,7 +103,15 @@ export function BookingForm() {
                         <label htmlFor="appointment_date" className="text-sm font-semibold flex items-center gap-2">
                             <CalendarDays className="h-4 w-4 text-primary" /> Requested Date *
                         </label>
-                        <Input id="appointment_date" name="appointment_date" type="date" required className="bg-muted/50 border-muted-foreground/20 block w-full" />
+                        <Input
+                            id="appointment_date"
+                            name="appointment_date"
+                            type="date"
+                            required
+                            min={minDate}
+                            max={maxDate}
+                            className="bg-muted/50 border-muted-foreground/20 block w-full"
+                        />
                     </div>
                 </div>
 
@@ -109,6 +124,7 @@ export function BookingForm() {
                         id="query_details"
                         name="query_details"
                         required
+                        minLength={10}
                         placeholder="Please provide a brief overview of your GST or taxation matter..."
                         className="resize-none h-32 bg-muted/50 border-muted-foreground/20"
                     />

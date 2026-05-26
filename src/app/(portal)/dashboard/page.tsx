@@ -2,9 +2,16 @@ import { logoutAdmin } from "@/actions/auth";
 import { createClient } from "@/lib/supabase/server";
 import { CalendarDays, Mail, Phone, Clock, Scale, LayoutDashboard, LogOut, CheckCircle2, CircleDashed } from "lucide-react";
 import Link from "next/link";
+// 1. Import the new component
+import { StatusButtons } from "@/components/dashboard/status-buttons";
+import { redirect } from "next/navigation";
 
 export default async function DashboardPage() {
     const supabase = await createClient();
+    const { data: authData, error: authError } = await supabase.auth.getUser();
+    if (authError || !authData?.user) {
+        redirect("/login");
+    }
 
     const { data: appointments, error } = await supabase
         .from("appointments")
@@ -24,7 +31,7 @@ export default async function DashboardPage() {
     return (
         <div className="min-h-screen bg-muted/20 flex flex-col">
 
-            {/* 1. App Header (Brings back the firm's branding) */}
+            {/* 1. App Header */}
             <header className="sticky top-0 z-30 bg-background border-b shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -46,13 +53,11 @@ export default async function DashboardPage() {
                             View Live Site
                         </Link>
 
-                        {/* The Native Form Logout */}
                         <form action={logoutAdmin}>
                             <button type="submit" className="text-sm font-medium text-destructive hover:bg-destructive/10 px-3 py-1.5 rounded-md transition-colors flex items-center gap-2">
                                 <LogOut className="h-4 w-4" /> Sign Out
                             </button>
                         </form>
-
                     </div>
                 </div>
             </header>
@@ -79,7 +84,7 @@ export default async function DashboardPage() {
                                     <th className="px-6 py-5">Client Profile</th>
                                     <th className="px-6 py-5">Contact Details</th>
                                     <th className="px-6 py-5">Requested Date</th>
-                                    <th className="px-6 py-5">Status</th>
+                                    <th className="px-6 py-5 w-48">Status</th> {/* Added fixed width for the status column */}
                                 </tr>
                             </thead>
                             <tbody className="divide-y">
@@ -135,19 +140,27 @@ export default async function DashboardPage() {
                                                 </div>
                                             </td>
 
-                                            {/* Status Badge */}
+                                            {/* Status Badge & Action Buttons */}
                                             <td className="px-6 py-5 align-top">
-                                                {appt.status === 'pending' ? (
-                                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200">
-                                                        <CircleDashed className="h-3.5 w-3.5 animate-[spin_3s_linear_infinite]" />
-                                                        PENDING
-                                                    </span>
-                                                ) : (
-                                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
-                                                        <CheckCircle2 className="h-3.5 w-3.5" />
-                                                        {appt.status.toUpperCase()}
-                                                    </span>
-                                                )}
+                                                <div className="flex flex-col gap-2">
+                                                    {/* Badge */}
+                                                    <div className="w-fit">
+                                                        {(appt.status || "pending").toLowerCase() === 'pending' ? (
+                                                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200">
+                                                                <CircleDashed className="h-3.5 w-3.5 animate-[spin_3s_linear_infinite]" />
+                                                                PENDING
+                                                            </span>
+                                                        ) : (
+                                                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                                                                <CheckCircle2 className="h-3.5 w-3.5" />
+                                                                {(appt.status || "resolved").toUpperCase()}
+                                                            </span>
+                                                        )}
+                                                    </div>
+
+                                                    {/* 2. Interactive Status Buttons */}
+                                                    <StatusButtons appointmentId={appt.id} currentStatus={appt.status} />
+                                                </div>
                                             </td>
 
                                         </tr>
