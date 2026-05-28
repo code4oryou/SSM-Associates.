@@ -9,11 +9,8 @@ export function LocationSection() {
         cityState: "Alipurduar, West Bengal 736121"
     };
 
-    /* 2. Geocoding Query Optimization:
-         We remove "GROUND FLOOR" and "MAITRA BHAVAN" from the map query because internal 
-         building titles confuse the coordinate parser. We anchor it to the complex and street.
-    */
-    const mapQueryAddress = "Lions Eye Hospital Complex, BF Rd, Shanti Nagar, Alipurduar, West Bengal 736121";
+    // 2. Exact Business Query: Using your actual registered office name
+    const mapQueryAddress = "Advocate Shiw Shankar Mandal, BF Rd, Shanti Nagar, Alipurduar, West Bengal 736121";
     const encodedQuery = encodeURIComponent(mapQueryAddress);
 
     return (
@@ -66,7 +63,7 @@ export function LocationSection() {
                         </div>
                     </div>
 
-                    {/* Right Column: Corrected Full-Scale Map */}
+                    {/* Right Column: Corrected Full-Scale Map Embed */}
                     <div className="lg:col-span-7 min-h-[400px] sm:min-h-[480px] rounded-3xl overflow-hidden border-2 shadow-2xl relative group bg-muted/30">
                         <iframe
                             width="100%"
@@ -75,10 +72,11 @@ export function LocationSection() {
                             loading="lazy"
                             allowFullScreen
                             referrerPolicy="no-referrer-when-downgrade"
-                            /* Fixed standard URL path parameter structuring */
                             src={`https://maps.google.com/maps?q=${encodedQuery}&t=&z=16&ie=UTF8&iwloc=B&output=embed`}
-                            title="SSM & Associates Corrected Office Location"
-                            className="absolute inset-0 w-full h-full object-cover filter contrast-[1.05]"
+                            title="Advocate Shiw Shankar Mandal Office Location"
+                            className="absolute inset-0 w-full h-full object-cover transition-all duration-300
+               contrast-[1.05] 
+               dark:invert dark:hue-rotate-180 dark:contrast-[0.85] dark:opacity-80"
                         />
                     </div>
 

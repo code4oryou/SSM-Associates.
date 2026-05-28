@@ -1,4 +1,5 @@
 import { AboutSection } from "@/components/layout/about-section";
+import { LeadershipSection } from "@/components/sections/leadership-section";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,13 +7,11 @@ export const metadata: Metadata = {
     description: "Learn about Advocate Shiw Shankar Mandal's expertise in GST, Income Tax, and complex legal litigation.",
 };
 
-// 1. ADD THE ASYNC KEYWORD HERE
 export default async function AboutPage() {
-
-    // 2. TEST LOADING: This will now work without the ts(1308) error
+    // TEST LOADING: This will now work without the ts(1308) error
     await new Promise((resolve) => setTimeout(resolve, 500));
 
-    // 3. TEST ERROR: Uncomment the line below to test the crash 
+    // TEST ERROR: Uncomment the line below to test the crash 
     // throw new Error("Database completely crashed!");
 
     return (
@@ -28,8 +27,12 @@ export default async function AboutPage() {
                 </div>
             </div>
 
-            <div className="py-12">
+            <div className="py-12 flex flex-col gap-12">
+                {/* 1. The Core Firm Biography */}
                 <AboutSection />
+
+                {/* 2. The Dynamic Leadership Roster */}
+                <LeadershipSection />
             </div>
         </div>
     );

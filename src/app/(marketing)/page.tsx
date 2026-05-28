@@ -2,6 +2,7 @@ import { AboutSection } from "@/components/layout/about-section";
 import { BackgroundElements } from "@/components/layout/background-elements";
 import { Hero } from "@/components/layout/hero";
 import { PracticeAreas } from "@/components/layout/practice-areas";
+import { LeadershipSection } from "@/components/sections/leadership-section";
 import { LocationSection } from "@/components/sections/location-section";
 import { OfficeGallery } from "@/components/sections/office-gallery";
 import { FIRM_BIO } from "@/lib/constants";
@@ -35,6 +36,10 @@ export default function MarketingLandingPage() {
             <Hero />
             <PracticeAreas />
             <AboutSection />
+
+            {/* Added Leadership Section Here */}
+            <LeadershipSection />
+
             <OfficeGallery />
             <LocationSection />
         </div>
