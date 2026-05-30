@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { loginAdmin } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Scale, Lock, Mail, Loader2 } from "lucide-react";
+import { Scale, Lock, Mail, Loader2, ArrowLeft } from "lucide-react";
 
 export default function LoginForm() {
     const [error, setError] = useState<string | null>(null);
@@ -48,7 +49,7 @@ export default function LoginForm() {
                             name="email"
                             type="email"
                             required
-                            placeholder="admin@ssm-associates.com"
+                            placeholder="Enter your admin email"
                             className="bg-muted/50"
                         />
                     </div>
@@ -81,6 +82,17 @@ export default function LoginForm() {
                         )}
                     </Button>
                 </form>
+
+                {/* Back to Home Link */}
+                <div className="mt-6 text-center">
+                    <Link
+                        href="/"
+                        className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center justify-center gap-2"
+                    >
+                        <ArrowLeft className="h-4 w-4" />
+                        Back to main website
+                    </Link>
+                </div>
 
             </div>
         </div>

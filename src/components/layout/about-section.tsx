@@ -19,16 +19,20 @@ export function AboutSection() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6 }}
-                        className="relative h-[500px] w-full rounded-2xl bg-muted overflow-hidden border shadow-sm"
+                        className="relative h-[500px] w-full rounded-2xl bg-muted overflow-hidden border shadow-sm group"
                     >
-                        {/* Placeholder for actual photo - using a subtle gradient for now */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-muted-foreground/20 to-transparent mix-blend-overlay" />
-                        <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                            [Professional Portrait Placeholder]
-                        </div>
+                        {/* The Actual Photo */}
+                        <img
+                            src="/gallery/adv.jpg"
+                            alt={`Portrait of ${FIRM_BIO.name}`}
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+
+                        {/* Subtle bottom gradient to ensure the Trust Badge is readable */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
 
                         {/* Trust Badge Overlay */}
-                        <div className="absolute bottom-6 left-6 right-6 bg-background/90 backdrop-blur-sm border rounded-xl p-4 shadow-lg">
+                        <div className="absolute bottom-6 left-6 right-6 bg-background/95 backdrop-blur-sm border rounded-xl p-4 shadow-xl transition-transform duration-300">
                             <div className="flex items-center gap-3">
                                 <CheckCircle2 className="h-8 w-8 text-primary" />
                                 <div>

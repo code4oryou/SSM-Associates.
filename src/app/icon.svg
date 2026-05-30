@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+
+  <!-- Premium Midnight Navy Background -->
+
+  <rect width="512" height="512" rx="112" fill="#0B132B"/>
+
+  
+
+  <!-- The Supreme Court Pediment (Roof) -->
+
+  <path d="M 256 50 L 50 170 H 462 Z" fill="#DFB15B"/>
+
+  
+
+  <!-- Inner Roof Shadow (Adds 3D architectural depth) -->
+
+  <path d="M 256 86 L 110 156 H 402 Z" fill="#0B132B" opacity="0.25"/>
+
+  
+
+  <!-- Roof Base Beam -->
+
+  <rect x="50" y="170" width="412" height="24" fill="#DFB15B"/>
+
+  
+
+  <!-- The Three Massive Load-Bearing Pillars -->
+
+  <!-- Proportions thickened to ensure visibility at 16x16 pixels -->
+
+  <rect x="110" y="194" width="76" height="226" fill="#FFFFFF"/>
+
+  <rect x="218" y="194" width="76" height="226" fill="#FFFFFF"/>
+
+  <rect x="326" y="194" width="76" height="226" fill="#FFFFFF"/>
+
+  
+
+  <!-- The 3-Tiered Legal Foundation (Stairs) -->
+
+  <rect x="90" y="420" width="332" height="24" fill="#DFB15B"/>
+
+  <rect x="70" y="444" width="372" height="24" fill="#DFB15B"/>
+
+  <rect x="50" y="468" width="412" height="24" fill="#DFB15B"/>
+
+  
+
+  <!-- Massive Engraved 'SSM' Initials -->
+
+  <!-- Cut cleanly out of the white pillars using the background navy color -->
+
+  <text x="148" y="315" font-family="'Times New Roman', Times, serif" font-size="84" font-weight="900" fill="#0B132B" text-anchor="middle" dominant-baseline="central">S</text>
+
+  <text x="256" y="315" font-family="'Times New Roman', Times, serif" font-size="84" font-weight="900" fill="#0B132B" text-anchor="middle" dominant-baseline="central">S</text>
+
+  <text x="364" y="315" font-family="'Times New Roman', Times, serif" font-size="84" font-weight="900" fill="#0B132B" text-anchor="middle" dominant-baseline="central">M</text>
+
+</svg>
+

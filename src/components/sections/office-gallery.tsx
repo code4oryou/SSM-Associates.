@@ -23,11 +23,11 @@ export function OfficeGallery() {
                 {/* The Asymmetric Bento Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[250px] md:auto-rows-[300px]">
 
-                    {/* Image 1: Main Feature */}
+                    {/* Image 1: Main Feature (Make sure this is your best photo) */}
                     <div className="relative group overflow-hidden rounded-3xl md:col-span-2 md:row-span-2 bg-muted">
                         <img
-                            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200"
-                            alt="SSM & Associates Office"
+                            src="/gallery/officedesk.jpg"
+                            alt="SSM & Associates Main Office"
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -41,8 +41,8 @@ export function OfficeGallery() {
                     {/* Image 2: Top Right Detail */}
                     <div className="relative group overflow-hidden rounded-3xl md:col-span-1 md:row-span-1 bg-muted">
                         <img
-                            src="https://images.unsplash.com/photo-1556761175-5973dc0f32b7?auto=format&fit=crop&q=80&w=800"
-                            alt="Office Workspace"
+                            src="/gallery/compdesk.jpg"
+                            alt="SSM Workspace Detail"
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -56,8 +56,8 @@ export function OfficeGallery() {
                     {/* Image 3: Bottom Right Detail */}
                     <div className="relative group overflow-hidden rounded-3xl md:col-span-1 md:row-span-1 bg-muted">
                         <img
-                            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800"
-                            alt="Office Interior"
+                            src="/gallery/officebuilding.jpg"
+                            alt="office location building"
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
