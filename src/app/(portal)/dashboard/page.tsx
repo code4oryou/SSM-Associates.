@@ -190,7 +190,7 @@ export default async function DashboardPage(props: {
                         </table>
                     </div>
 
-                    {/* ADVANCED PAGINATION COMPONENT */}
+                    {/* ADVANCED PAGINATION COMPONENT WITH REPLACE PROPS */}
                     {totalPages > 1 && (
                         <div className="bg-background border-t px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
                             <p className="text-sm text-muted-foreground font-medium">
@@ -200,12 +200,12 @@ export default async function DashboardPage(props: {
                             <div className="flex items-center gap-1">
                                 {/* First Page */}
                                 <Button variant="outline" size="icon" className="h-8 w-8 hidden sm:flex" disabled={currentPage <= 1} asChild={currentPage > 1}>
-                                    {currentPage > 1 ? <Link href={createPageURL(1)}><ChevronsLeft className="h-4 w-4" /></Link> : <ChevronsLeft className="h-4 w-4" />}
+                                    {currentPage > 1 ? <Link href={createPageURL(1)} replace><ChevronsLeft className="h-4 w-4" /></Link> : <ChevronsLeft className="h-4 w-4" />}
                                 </Button>
 
                                 {/* Prev Page */}
                                 <Button variant="outline" size="icon" className="h-8 w-8" disabled={currentPage <= 1} asChild={currentPage > 1}>
-                                    {currentPage > 1 ? <Link href={createPageURL(currentPage - 1)}><ChevronLeft className="h-4 w-4" /></Link> : <ChevronLeft className="h-4 w-4" />}
+                                    {currentPage > 1 ? <Link href={createPageURL(currentPage - 1)} replace><ChevronLeft className="h-4 w-4" /></Link> : <ChevronLeft className="h-4 w-4" />}
                                 </Button>
 
                                 {/* Page Numbers Array */}
@@ -223,7 +223,7 @@ export default async function DashboardPage(props: {
                                                 asChild={currentPage !== page}
                                             >
                                                 {currentPage !== page ? (
-                                                    <Link href={createPageURL(page)}>{page}</Link>
+                                                    <Link href={createPageURL(page)} replace>{page}</Link>
                                                 ) : (
                                                     <span>{page}</span>
                                                 )}
@@ -234,12 +234,12 @@ export default async function DashboardPage(props: {
 
                                 {/* Next Page */}
                                 <Button variant="outline" size="icon" className="h-8 w-8" disabled={currentPage >= totalPages} asChild={currentPage < totalPages}>
-                                    {currentPage < totalPages ? <Link href={createPageURL(currentPage + 1)}><ChevronRight className="h-4 w-4" /></Link> : <ChevronRight className="h-4 w-4" />}
+                                    {currentPage < totalPages ? <Link href={createPageURL(currentPage + 1)} replace><ChevronRight className="h-4 w-4" /></Link> : <ChevronRight className="h-4 w-4" />}
                                 </Button>
 
                                 {/* Last Page */}
                                 <Button variant="outline" size="icon" className="h-8 w-8 hidden sm:flex" disabled={currentPage >= totalPages} asChild={currentPage < totalPages}>
-                                    {currentPage < totalPages ? <Link href={createPageURL(totalPages)}><ChevronsRight className="h-4 w-4" /></Link> : <ChevronsRight className="h-4 w-4" />}
+                                    {currentPage < totalPages ? <Link href={createPageURL(totalPages)} replace><ChevronsRight className="h-4 w-4" /></Link> : <ChevronsRight className="h-4 w-4" />}
                                 </Button>
                             </div>
                         </div>
