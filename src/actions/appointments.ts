@@ -42,11 +42,11 @@ export async function createAppointment(formData: FormData) {
         const cleanDate = `${day}/${month}/${year}`;
 
         // 6. Trigger the email notification with the clean data
-        sendAdminNotification({
+        await sendAdminNotification({    // <--- ADD 'await' RIGHT HERE
             name: validatedData.client_name,
             email: validatedData.client_email,
             phone: validatedData.client_phone || "Not provided",
-            date: cleanDate, // Safely passes DD/MM/YYYY without times!
+            date: cleanDate,
             details: validatedData.query_details || "Not provided"
         });
 
