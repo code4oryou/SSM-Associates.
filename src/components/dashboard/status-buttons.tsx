@@ -12,18 +12,12 @@ interface StatusButtonsProps {
 
 export function StatusButtons({ appointmentId, currentStatus }: StatusButtonsProps) {
     const [isPending, startTransition] = useTransition();
-
-    // Read the current status from the DB (defaults to pending if NULL)
     const normalizedStatus = (currentStatus || "pending").toLowerCase();
 
     function updateStatus(newStatus: string) {
         startTransition(async () => {
-            // Send exactly what the database ENUM expects
             const response = await updateAppointmentStatus(appointmentId, newStatus);
-
-            if (response && !response.success) {
-                console.error("DB Update Failed:", response.error);
-            }
+            if (response && !response.success) console.error("DB Update Failed:", response.error);
         });
     }
 
@@ -31,42 +25,24 @@ export function StatusButtons({ appointmentId, currentStatus }: StatusButtonsPro
         <div className="flex flex-col gap-2 mt-3">
             {isPending ? (
                 <Button disabled variant="outline" size="sm" className="w-full justify-start h-8 text-xs">
-                    <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" /> Updating...
+                    <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" /> Processing...
                 </Button>
             ) : (
                 <>
-                    {/* If Pending -> Send "confirmed" */}
                     {normalizedStatus === "pending" && (
-                        <Button
-                            onClick={() => updateStatus("confirmed")}
-                            variant="default"
-                            size="sm"
-                            className="w-full justify-start h-8 text-xs bg-blue-600 hover:bg-blue-700 text-white"
-                        >
-                            <PhoneCall className="mr-2 h-3.5 w-3.5" /> Accept Consultation
+                        <Button onClick={() => updateStatus("confirmed")} variant="default" size="sm" className="w-full justify-start h-8 text-xs bg-blue-600 hover:bg-blue-700 text-white">
+                            <PhoneCall className="mr-2 h-3.5 w-3.5" /> Accept Case
                         </Button>
                     )}
 
-                    {/* If not completed -> Send "completed" */}
                     {normalizedStatus !== "completed" && (
-                        <Button
-                            onClick={() => updateStatus("completed")}
-                            variant="outline"
-                            size="sm"
-                            className="w-full justify-start h-8 text-xs text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-950/30"
-                        >
+                        <Button onClick={() => updateStatus("completed")} variant="outline" size="sm" className="w-full justify-start h-8 text-xs text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-950/30">
                             <CheckCircle className="mr-2 h-3.5 w-3.5" /> Close Case
                         </Button>
                     )}
 
-                    {/* If completed -> Revert to "pending" */}
                     {normalizedStatus === "completed" && (
-                        <Button
-                            onClick={() => updateStatus("pending")}
-                            variant="ghost"
-                            size="sm"
-                            className="w-full justify-start h-8 text-xs text-muted-foreground"
-                        >
+                        <Button onClick={() => updateStatus("pending")} variant="ghost" size="sm" className="w-full justify-start h-8 text-xs text-muted-foreground">
                             <Clock className="mr-2 h-3.5 w-3.5" /> Reopen Case
                         </Button>
                     )}

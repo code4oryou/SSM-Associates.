@@ -12,13 +12,13 @@ export const PRACTICE_AREAS = [
     {
         id: "tax-litigation",
         title: "GST & Income Tax Litigation",
-        description: "Expert representation before tax authorities and appellate tribunals. Handling complex disputes including GST demand orders, Income Tax scrutiny assessments, and rectification proceedings.",
+        description: "Expert representation before tax authorities and appeal authorities. Handling complex disputes including GST demand orders, Income Tax scrutiny assessments, and rectification proceedings.",
         icon: Scale,
     },
     {
         id: "advisory-planning",
         title: "Strategic Tax Advisory & Planning",
-        description: "Comprehensive advisory on Input Tax Credit (ITC) eligibility, corporate tax structuring, and individual tax optimization to ensure technically sound outcomes.",
+        description: "Comprehensive advisory on Input Tax Credit (ITC) eligibility and individual tax optimization to ensure technically sound outcomes.",
         icon: Landmark,
     },
     {

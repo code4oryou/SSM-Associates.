@@ -65,6 +65,12 @@ export async function createAppointment(formData: FormData) {
 export async function updateAppointmentStatus(id: string, newStatus: string) {
     const supabase = await createClient();
 
+    // Verify auth
+    const { data: authData } = await supabase.auth.getUser();
+    if (!authData?.user) {
+        return { success: false, error: "Unauthorized" };
+    }
+
     // Add .select() to force Supabase to return the row if successful
     const { data, error } = await supabase
         .from("appointments")
@@ -83,6 +89,30 @@ export async function updateAppointmentStatus(id: string, newStatus: string) {
         return { success: false, error: "Permission denied by database." };
     }
 
+    // CRITICAL for UI refreshing
+    revalidatePath("/dashboard");
+    return { success: true };
+}
+
+export async function deleteAppointment(appointmentId: string) {
+    const supabase = await createClient();
+
+    // Verify admin auth before deleting
+    const { data: authData } = await supabase.auth.getUser();
+    if (!authData?.user) {
+        return { success: false, error: "Unauthorized" };
+    }
+
+    const { error } = await supabase
+        .from("appointments")
+        .delete()
+        .eq("id", appointmentId);
+
+    if (error) {
+        return { success: false, error: error.message };
+    }
+
+    // CRITICAL for UI refreshing
     revalidatePath("/dashboard");
     return { success: true };
 }

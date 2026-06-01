@@ -5,7 +5,7 @@ export function LocationSection() {
     const displayAddress = {
         floor: "Ground Floor, Maitra Bhavan",
         complex: "Lions Eye Hospital Complex",
-        street: "BF Rd, Shanti Nagar",
+        street: "BF Road, Puran Bazar, Chowpathy",
         cityState: "Alipurduar, West Bengal 736121"
     };
 
@@ -43,7 +43,8 @@ export function LocationSection() {
                                     <p className="text-muted-foreground text-sm leading-relaxed font-medium">
                                         {displayAddress.floor},<br />
                                         {displayAddress.complex},<br />
-                                        {displayAddress.street}, {displayAddress.cityState}
+                                        {displayAddress.street}, <br />
+                                        {displayAddress.cityState}
                                     </p>
                                 </div>
                             </div>

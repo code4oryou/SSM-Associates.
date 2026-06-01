@@ -33,7 +33,7 @@ export function Footer() {
                         <ul className="space-y-3 text-sm">
                             <li className="flex items-start gap-3">
                                 <MapPin className="h-4 w-4 mt-0.5 text-primary shrink-0" />
-                                <span>Ground Floor, Maitra Bhavan, Lions Eye Hospital Complex, Alipurduar, WB 736121</span>
+                                <span>Ground Floor, Maitra Bhavan, Lions Eye Hospital Complex, Puran Bazaar, Chowpathy,<br /> Alipurduar, WB 736121</span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Mail className="h-4 w-4 text-primary shrink-0" />
